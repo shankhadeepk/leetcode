@@ -2,7 +2,8 @@ package com.leetcodeproj.leetcode;
 
 import java.util.*;
 
-//
+//aabbccc = a2b2c3
+// Leet code: Cracking coding interview - pg 150
 public class CompressedString {
 
     public static void main(String[] args) {
