@@ -46,8 +46,7 @@ public class PhoneNumber {
 
     public static void main(String[] args) {
         PhoneNumber phoneNumber=new PhoneNumber();
+        System.out.println(phoneNumber.letterCombinations("236").size());
         phoneNumber.letterCombinations("236").stream().forEach(System.out::println);
-
-
     }
 }
