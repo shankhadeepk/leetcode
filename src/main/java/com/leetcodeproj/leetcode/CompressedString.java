@@ -1,6 +1,7 @@
 package com.leetcodeproj.leetcode;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 //aabbccc = a2b2c3
 // Leet code: Cracking coding interview - pg 150

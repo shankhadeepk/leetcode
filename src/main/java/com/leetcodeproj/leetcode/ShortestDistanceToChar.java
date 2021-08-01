@@ -1,11 +1,7 @@
 package com.leetcodeproj.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /*
-* Shortest Distance to charcater
+* Leetcode 821 : Shortest Distance to charcater
 *
 * s= "loveleetcode"
 * c= "e"

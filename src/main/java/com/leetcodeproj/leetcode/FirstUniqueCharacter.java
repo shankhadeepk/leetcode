@@ -1,7 +1,5 @@
 package com.leetcodeproj.leetcode;
 
-import java.util.*;
-
 //Leetcode 387. First Unique Character in a String
 public class FirstUniqueCharacter {
     public static void main(String[] args) {
