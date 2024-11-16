@@ -36,6 +36,9 @@ public class Zalando2 {
 
     public static void main(String[] args) {
         Zalando2 zalando2=new Zalando2();
-        zalando2.solution("The quick brown fox jumps over the lazy dog",39);
+        //zalando2.solution("The quick brown fox jumps over the lazy dog",39);
+
+        String str="Codility me ret";
+        System.out.println(str.substring(0,3));
     }
 }
