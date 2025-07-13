@@ -11,6 +11,5 @@ public class RemovalOfDuplicateChars {
         Set<Character> charList = s.chars().mapToObj(c -> (char) c).collect(Collectors.toCollection(LinkedHashSet::new));
 
         charList.stream().forEach(System.out::print);
-
     }
 }
