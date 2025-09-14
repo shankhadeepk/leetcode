@@ -7,6 +7,11 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * There are set of tasks running parallely. Once all tasks are completed then start another task.
+ *
+ * */
+
 public class CompletableFutureMultipleThread {
 
     public static void main(String[] args) {
