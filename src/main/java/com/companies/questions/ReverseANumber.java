@@ -1,4 +1,4 @@
-package com.simple;
+package com.companies.questions;
 
 public class ReverseANumber {
 

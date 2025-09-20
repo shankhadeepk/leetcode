@@ -1,4 +1,4 @@
-package com.simple.morganstanley;
+package com.companies.questions.morganstanley;
 
 import java.util.*;
 import java.util.function.Predicate;

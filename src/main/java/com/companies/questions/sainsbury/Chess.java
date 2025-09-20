@@ -1,4 +1,4 @@
-package com.simple.sainsbury;
+package com.companies.questions.sainsbury;
 
 public class Chess {
 

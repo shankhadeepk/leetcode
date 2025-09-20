@@ -1,4 +1,4 @@
-package com.simple.morganstanley;
+package com.companies.questions.morganstanley;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

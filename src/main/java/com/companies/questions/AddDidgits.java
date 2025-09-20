@@ -1,4 +1,4 @@
-package com.simple;
+package com.companies.questions;
 
 public class AddDidgits {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.simple.morganstanley;
+package com.companies.questions.morganstanley;
 
 public class ThreadPrint1to10 {
     private static final int MAX = 10;
