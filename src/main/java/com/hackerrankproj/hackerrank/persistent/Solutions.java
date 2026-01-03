@@ -9,8 +9,8 @@ public class Solutions {
     public static void main(String[] args) {
        List<Long> n=new ArrayList<>();
        n.add(2l);
-        n.add(4l);
-        n.add(3l);
+       n.add(4l);
+       n.add(3l);
 
         List<Long> result=arrayChallenge(n);
 

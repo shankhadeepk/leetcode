@@ -15,31 +15,16 @@ public class CsvProcessor {
     public static void main(String[] args) {
         // Get all employee grouped by department for highest salary in department
         List<Employee> employeesL = createEmployees();
-
         System.out.println("All Employees");
-
         employeesL.stream().forEach(System.out::println);
 
         // Employee of each department having maximum salary
         Map<String, Optional<Employee>> resultedEmployees = employeesL.stream().collect(Collectors.groupingBy(Employee::department, Collectors.maxBy(Comparator.comparingDouble(Employee::salary))));
-
         System.out.println("Employee of each department having maximum salary");
         resultedEmployees.entrySet().stream().forEach(System.out::println);
-        /*
-         * Employees to be added and removed
-         *
-         * */
 
         Map<Integer, Employee> newEmployees = getNewEmployees();
         Map<Integer, Employee> employeesFromDB = getEmployeesFromDb();
-
-        Predicate<Integer> employeesToBeRemoved = (e) -> {
-            return !newEmployees.containsKey(e);
-        };
-
-        Predicate<Integer> empployeesToBeAdded = (e) -> {
-            return newEmployees.containsKey(e);
-        };
 
         System.out.println("New Employees to be added");
         newEmployees.entrySet().stream().forEach(System.out::println);
@@ -48,30 +33,28 @@ public class CsvProcessor {
         employeesFromDB.entrySet().forEach(System.out::println);
         Comparator<Employee> employeeComparator = Comparator.comparing(Employee::empId);
 
-        //To be Removed
-        Set<Integer> toBeRemoved = employeesFromDB.keySet().stream().filter(employeesToBeRemoved).collect(Collectors.toSet());
-        System.out.println("To be Removed Employees");
-        toBeRemoved.stream().forEach(e -> System.out.print(" " + e));
+        //Employees to be removed
+        Predicate<Integer> employeesRemoved = (emp) -> {return !newEmployees.containsKey(emp);};
+        Set<Integer> emplsRemoved = employeesFromDB.keySet().stream().filter(employeesRemoved).collect(Collectors.toSet());
+        System.out.println("Employees to be removed");
+        emplsRemoved.stream().forEach(e -> System.out.println(" "+e));
 
-        System.out.println();
+        //Employees to be added
+        Predicate<Integer> employeesNotPresentInDB = (e) -> {
+            return !employeesFromDB.containsKey(e);
+        };
+        Set<Integer> employeesToBeAdded = newEmployees.keySet().stream().filter(employeesNotPresentInDB).collect(Collectors.toSet());
+        System.out.println("Employees to be added");
+        employeesToBeAdded.stream().forEach(e-> System.out.println(" "+e));
 
-        // To be inserted
-        Set<Integer> toBeAdded = employeesFromDB.keySet().stream().filter(empployeesToBeAdded).collect(Collectors.toSet());
-        System.out.println("To be Added Employees");
-        toBeRemoved.stream().forEach(e -> System.out.print(" " + e));
-
-        System.out.println();
-        //To be updated
-
-        Map<Integer, Employee> toBeUpdated = employeesFromDB.entrySet()
-                .stream()
-                .filter(e -> {
-                    Employee empl = newEmployees.get(e.getKey());
-                    return empl != null && !isSame(empl, e.getValue());
+        //Employees to be updated
+        Map<Integer, Employee> employeeUpdated = newEmployees.entrySet().stream()
+                .filter((emp) -> {
+                    Employee employee = employeesFromDB.get(emp.getKey());
+                    return employee != null && !isSame(employee, emp.getValue());
                 }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-        System.out.println("To be Updated");
-        toBeUpdated.entrySet().stream().forEach(employee -> System.out.println("K=" + employee.getKey() + "V=" + employee.getValue()));
+        System.out.println("Employees to be updated");
+        employeeUpdated.entrySet().stream().forEach(emp -> System.out.println(" "+emp.getKey()+" "+emp.getValue()+" "));
     }
 
     private static boolean isSame(Employee empl, Employee value) {
@@ -166,6 +149,13 @@ public class CsvProcessor {
                 .lastName("Kumar")
                 .mgrId(20001)
                 .salary(20000.00)
+                .department("TECH")
+                .build());
+        newEmployees.put(10901, Employee.builder().empId(10901)
+                .firstName("Mukundan")
+                .lastName("Kishore")
+                .mgrId(20002)
+                .salary(25000.00)
                 .department("TECH")
                 .build());
         return newEmployees;

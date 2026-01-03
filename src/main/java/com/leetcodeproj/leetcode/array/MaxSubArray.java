@@ -9,6 +9,7 @@ import java.util.Arrays;
  * Output: 6
  * Explanation: The subarray [4,-1,2,1] has the largest sum 6.
  *
+ * Kadane's Algorithm
  * */
 public class MaxSubArray {
 
